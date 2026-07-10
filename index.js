@@ -1179,6 +1179,25 @@ class GoogleWorkspaceMCP {
       }
     }
 
+    // Extract attachments info
+    const attachments = [];
+    const extractAttachments = (parts) => {
+      for (const part of parts || []) {
+        if (part.filename && part.filename.length > 0) {
+          attachments.push({
+            filename: part.filename,
+            mimeType: part.mimeType,
+            size: part.body.size || 0,
+            attachmentId: part.body.attachmentId,
+          });
+        }
+        if (part.parts) {
+          extractAttachments(part.parts);
+        }
+      }
+    };
+    extractAttachments(message.payload.parts);
+
     return {
       id: message.id,
       threadId: message.threadId,
@@ -1188,6 +1207,7 @@ class GoogleWorkspaceMCP {
       date: getHeader("date"),
       body: body,
       snippet: message.snippet,
+      attachments: attachments,
     };
   }
 
