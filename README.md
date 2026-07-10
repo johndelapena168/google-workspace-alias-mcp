@@ -151,6 +151,64 @@ The MCP will be automatically detected when installed globally.
 }
 ```
 
+### List Email Templates
+
+```json
+{
+  "tool": "list_templates",
+  "arguments": {}
+}
+```
+
+### Send Email Using Template
+
+```json
+{
+  "tool": "send_template_email",
+  "arguments": {
+    "template": "meeting-followup",
+    "to": ["client@example.com"],
+    "variables": {
+      "name": "John",
+      "meeting_name": "Project Review",
+      "summary": "Discussed project timeline and milestones",
+      "next_steps": "1. Finalize requirements\n2. Start development",
+      "sender_name": "John Dela Pena"
+    },
+    "from": "hello@nexteraofai.com"
+  }
+}
+```
+
+### Create Custom Template
+
+```json
+{
+  "tool": "create_template",
+  "arguments": {
+    "name": "weekly-report",
+    "displayName": "Weekly Report",
+    "subject": "Weekly Report: {{week_date}}",
+    "body": "Hi {{name}},\n\nHere's the weekly report for {{week_date}}:\n\n{{report_content}}\n\nBest regards,\n{{sender_name}}"
+  }
+}
+```
+
+### Schedule Email for Later
+
+```json
+{
+  "tool": "send_scheduled_email",
+  "arguments": {
+    "to": ["team@example.com"],
+    "subject": "Weekly Update",
+    "body": "Here's the weekly project update...",
+    "scheduledTime": "2026-07-15T09:00:00",
+    "from": "hello@nexteraofai.com"
+  }
+}
+```
+
 ### Create Calendar Event
 
 ```json
