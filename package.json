@@ -1,11 +1,11 @@
 {
-  "name": "gws-mcp",
+  "name": "google-workspace-alias-mcp",
   "version": "1.1.0",
   "description": "MCP server for Google Workspace (Gmail + Calendar) with send-as alias support, email templates, scheduled send, attachments, batch operations, and full feature parity",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "gws-mcp": "./index.js"
+    "google-workspace-alias-mcp": "./index.js"
   },
   "scripts": {
     "start": "node index.js",
